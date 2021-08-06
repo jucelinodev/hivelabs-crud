@@ -2,11 +2,11 @@ import User from '../models/User'
 import { DeleteResult, EntityRepository, Repository } from 'typeorm'
 import { CreateUserDto } from '../dtos/CreateUserDto'
 import { UpdateUserDto } from '../dtos/UpdateUserDto'
-import CustomError from '../utils/CustomError'
+import CustomError from '../../utils/CustomError'
 
 @EntityRepository(User)
 class UserRepository extends Repository<User> {
-  public async findAllUsers(): Promise<User[]> {
+  public async findAll(): Promise<User[]> {
     const users = await this.find()
     return users
   }
@@ -33,15 +33,15 @@ class UserRepository extends Repository<User> {
     return users
   }
 
+  public async findByNickname(nickname: string): Promise<User | undefined> {
+    const user = await this.findOne({ where: { nickname: nickname } })
+    return user
+  }
+
   public async createUser(data: CreateUserDto): Promise<User> {
     const user = this.create(data)
     const userSaved = await this.save(user)
     return userSaved
-  }
-
-  public async findByNickname(nickname: string): Promise<User | undefined> {
-    const user = await this.findOne({ where: { nickname: nickname } })
-    return user
   }
 
   public async updateUser(id: string, data: UpdateUserDto): Promise<User> {

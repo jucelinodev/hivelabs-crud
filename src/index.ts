@@ -4,7 +4,7 @@ import './database'
 
 import express from 'express'
 import { router } from './routes'
-import handleError from './middlewares/HandleError'
+import handleError from './app/middlewares/HandleError'
 
 const app = express()
 
