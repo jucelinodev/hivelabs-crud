@@ -9,6 +9,15 @@ export class UserController {
     const userRepo = getCustomRepository(UserRepository)
     const { name, lastname, nickname, address, bio } = req.body
 
+    const userExist = await userRepo.findByNickname(nickname)
+
+    if (userExist) {
+      throw new CustomError(
+        'Já existe um usuário cadastrado com esse nickname',
+        409
+      )
+    }
+
     const user = await userRepo.createUser({
       name,
       lastname,
