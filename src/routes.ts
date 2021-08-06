@@ -12,5 +12,7 @@ router.get('/', (req: Request, res: Response) => {
 
 router.post('/users', userController.store)
 router.get('/users/:nickname', userController.show)
+router.delete('/users/:id', userController.destroy)
+router.put('/users/:id', userController.update)
 
 export { router }
