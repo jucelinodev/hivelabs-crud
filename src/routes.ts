@@ -8,8 +8,8 @@ const router = Router()
 const userController = new UserController()
 
 router.get('/users', userController.index)
-router.post('/users', CreateUserValidator, userController.store)
 router.get('/users/:nickname', userController.show)
+router.post('/users', CreateUserValidator, userController.store)
 router.delete('/users/:id', IdValidator, userController.destroy)
 router.put(
   '/users/:id',
