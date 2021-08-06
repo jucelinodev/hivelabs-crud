@@ -1,15 +1,21 @@
-import { Router, Request, Response } from 'express'
+import { Router } from 'express'
 import { UserController } from './app/controllers/UserController'
 import CreateUserValidator from './app/validators/CreateUserValidator'
 import UpdateUserValidator from './app/validators/UpdateUserValidator'
+import IdValidator from './app/validators/IdValidator'
 
 const router = Router()
 const userController = new UserController()
 
 router.get('/users', userController.index)
-router.post('/users', UpdateUserValidator, userController.store)
+router.post('/users', CreateUserValidator, userController.store)
 router.get('/users/:nickname', userController.show)
-router.delete('/users/:id', userController.destroy)
-router.put('/users/:id', UpdateUserValidator, userController.update)
+router.delete('/users/:id', IdValidator, userController.destroy)
+router.put(
+  '/users/:id',
+  IdValidator,
+  UpdateUserValidator,
+  userController.update
+)
 
 export { router }
