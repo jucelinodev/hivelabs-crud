@@ -24,7 +24,7 @@ class User {
   nickname: string
 
   @Column()
-  adressl: string
+  address: string
 
   @Column({
     length: 100,
