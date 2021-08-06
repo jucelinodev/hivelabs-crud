@@ -76,29 +76,29 @@ $ npm run build
 $ npm start
 ```
 
-# Documentação
+# Recursos da API
 
-### GET '/users
+## GET '/users
 
 Retorna uma lista de usuários, se não existe nenhum retorna um array vazio
 
-### GET '/users?nome=nomevalido'
+## GET '/users?nome=nomevalido'
 
 Retorna uma lista de usuários filtrada pelo coluna "name", se não existir nenhum retorna um array vazio
 
-### GET '/users?sobrenome=sobrenomevalido'
+## GET '/users?sobrenome=sobrenomevalido'
 
 Retorna uma lista de usuários filtrada pela coluna "lastname", se não existir nenhum retorna um array vazio
 
-### GET '/users?nome=nomevalido&sobrenome=sobrenomevalido'
+## GET '/users?nome=nomevalido&sobrenome=sobrenomevalido'
 
 Retorna uma lista de usuários filtrada pela coluna "name" e "lastname", se não existir nenhum retorna um array vazio
 
-### GET '/users/:nickname'
+## GET '/users/:nickname'
 
 Retorna um usuário pelo nickname. Se não existe retorna um erro.
 
-### POST '/users'
+## POST '/users'
 
 Cria um usuário com nickname único e retonar o usuário criado. A bio é opcional. Exemplo de request:
 
@@ -112,7 +112,7 @@ Cria um usuário com nickname único e retonar o usuário criado. A bio é opcio
 }
 ```
 
-### PUT '/users/:id'
+## PUT '/users/:id'
 
 Atualiza lastname ou address ou nickname, retorna usuário atualizado. Nickname precisa ser único. Exemplos de requests:
 
@@ -131,6 +131,6 @@ Ou:
 }
 ```
 
-### DELETE '/users/:id'
+## DELETE '/users/:id'
 
 Apaga um usuário do banco de dados pelo id e retorna uma mensagem de sucesso. Se não existir, retorna um erro.
