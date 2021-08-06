@@ -10,8 +10,8 @@ class UserRepository extends Repository<User> {
     return userSaved
   }
 
-  public async findByNickname(nickname: string): Promise<User | null> {
-    const user = await this.findOneOrFail({ where: nickname })
+  public async findByNickname(nickname: string): Promise<User | undefined> {
+    const user = await this.findOne({ where: { nickname: nickname } })
     return user
   }
 }

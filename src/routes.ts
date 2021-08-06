@@ -11,5 +11,6 @@ router.get('/', (req: Request, res: Response) => {
 })
 
 router.post('/users', userController.store)
+router.get('/users/:nickname', userController.show)
 
 export { router }
