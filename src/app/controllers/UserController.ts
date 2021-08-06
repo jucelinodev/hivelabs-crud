@@ -73,7 +73,7 @@ export class UserController {
     const userRepository = getCustomRepository(UserRepository)
 
     const { id } = req.params
-    const { nickname } = req.body
+    const { lastname, nickname, address } = req.body
 
     if (nickname) {
       const useExist = await userRepository.findByNickname(nickname)
@@ -85,7 +85,11 @@ export class UserController {
       }
     }
 
-    const user = await userRepository.updateUser(id, req.body)
+    const user = await userRepository.updateUser(id, {
+      lastname,
+      nickname,
+      address,
+    })
 
     return res.status(200).json({ user })
   }
