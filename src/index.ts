@@ -1,17 +1,16 @@
 import 'reflect-metadata'
 import 'express-async-errors'
 import './database'
+
 import express from 'express'
+import { router } from './routes'
+import handleError from './middlewares/HandleError'
 
 const app = express()
 
 app.use(express.json())
-
-app.get('/', (req, res) => {
-  res.json({
-    msg: 'API is running',
-  })
-})
+app.use(router)
+app.use(handleError)
 
 const APP_HOST = process.env.APP_HOST || 'http://localhost'
 const PORT = process.env.PORT || 3333
