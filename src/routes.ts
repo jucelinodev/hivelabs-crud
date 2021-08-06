@@ -4,12 +4,7 @@ import { UserController } from './controllers/UserController'
 const router = Router()
 const userController = new UserController()
 
-router.get('/', (req: Request, res: Response) => {
-  return res.json({
-    msg: 'API is running',
-  })
-})
-
+router.get('/users', userController.index)
 router.post('/users', userController.store)
 router.get('/users/:nickname', userController.show)
 router.delete('/users/:id', userController.destroy)

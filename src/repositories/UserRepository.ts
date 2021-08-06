@@ -1,16 +1,38 @@
 import User from '../models/User'
-import {
-  DeleteResult,
-  EntityRepository,
-  Repository,
-  UpdateResult,
-} from 'typeorm'
+import { DeleteResult, EntityRepository, Repository } from 'typeorm'
 import { CreateUserDto } from '../dtos/CreateUserDto'
 import { UpdateUserDto } from '../dtos/UpdateUserDto'
 import CustomError from '../utils/CustomError'
 
 @EntityRepository(User)
 class UserRepository extends Repository<User> {
+  public async findAllUsers(): Promise<User[]> {
+    const users = await this.find()
+    return users
+  }
+
+  public async findByName(name: string | any): Promise<User[]> {
+    const users = await this.find({
+      where: { name },
+    })
+    return users
+  }
+
+  public async findByLastName(lastname: string | any): Promise<User[]> {
+    const users = await this.find({
+      where: { lastname },
+    })
+    return users
+  }
+
+  public async findByFullName(
+    name: string | any,
+    lastname: string | any
+  ): Promise<User[]> {
+    const users = await this.find({ where: { name, lastname } })
+    return users
+  }
+
   public async createUser(data: CreateUserDto): Promise<User> {
     const user = this.create(data)
     const userSaved = await this.save(user)
