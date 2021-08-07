@@ -28,30 +28,18 @@ $ cd /hivelabs-crud
 $ npm install
 ```
 
-- Renomeie "ormconfig.example.js" para "ormconfig.js" e entre com suas credenciais do Postgres:
+- Renomeie ".env.example" para ".env" e entre com seu usuário e senha do Postgres:
 
 ```
-module.exports = {
-  type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: 'seu-usuario-postgres',
-  password: 'sua-senha-postgres',
-  database: 'hivelabs',
-  entities: [
-    process.env.NODE_ENV === 'production'
-      ? './dist/app/models/*.js'
-      : './src/app/models/*.ts',
-  ],
-  migrations: [
-    process.env.NODE_ENV === 'production'
-      ? './dist/database/migrations/*.js'
-      : './src/database/migrations/*.ts',
-  ],
-  cli: {
-    migrationsDir: './src/database/migrations',
-  },
-}
+# Server
+HOST=localhost
+PORT=3333
+
+# Database
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+POSTGRES_PORT=5432
+POSTGRES_DB=hivelabs
 ```
 
 - Lembre-se de criar o banco de dados:

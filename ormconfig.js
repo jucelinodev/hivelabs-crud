@@ -1,10 +1,10 @@
 module.exports = {
   type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: '',
-  password: '',
-  database: 'hivelabs',
+  host: process.env.HOST,
+  port: +process.env.POSTGRES_PORT,
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DB,
   entities: [
     process.env.NODE_ENV === 'production'
       ? './dist/app/models/*.js'
