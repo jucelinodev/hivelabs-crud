@@ -28,7 +28,7 @@ $ cd /hivelabs-crud
 $ npm install
 ```
 
-- Renomeie ".env.example" para ".env" e entre com seu usuário e senha do Postgres:
+- Renomeie ".env.example" para ".env" e configure com seu usuário e senha do Postgres:
 
 ```
 # Server
@@ -42,7 +42,7 @@ POSTGRES_PORT=5432
 POSTGRES_DB=hivelabs
 ```
 
-- Lembre-se de criar o banco de dados:
+- Lembre-se de ter um serviço do Postgres ativo e criar o banco de dados:
 
 ```
 $ psql CREATE DATABASE hivelabs;
@@ -70,6 +70,24 @@ $ npm run build
 
 ```
 $ npm start
+```
+
+### Executar com docker-compose:
+
+- Necessário ter o docker e o docker-compose instalado na sua máquina. Clone o projeto, configure o .env e instale as dependências
+
+- Certifique-se de que a porta 5432 não esteja ocupada por outro serviço ou container. Também é possível mudar o redirecionamento da porta no arquivo docker-compose.yml
+
+- Para subir os containers usando docker-compose, digite:
+
+```
+$ docker-compose up
+```
+
+- Não se esqueça de rodar as migrações:
+
+```
+$ npm run typeorm migration:run
 ```
 
 # Recursos da API
