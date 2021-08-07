@@ -74,9 +74,9 @@ $ npm start
 
 ### Executar com docker-compose:
 
-- Necessário ter o docker e o docker-compose instalado na sua máquina. Clone o projeto, configure o .env e instale as dependências
+- Necessário ter o docker e o docker-compose instalado na sua máquina. Clone o projeto, configure o .env e instale as dependências (npm install)
 
-- Certifique-se de que a porta 5432 não esteja ocupada por outro serviço ou container, ou que tenha containers com nomes repetidos.
+- Certifique-se de que a porta 5432 não esteja ocupada por outro serviço ou container, ou que tenha containers com nomes repetidos
 
 - Também é possível mudar o redirecionamento da porta no arquivo docker-compose.yml
 
@@ -86,19 +86,19 @@ $ npm start
 $ docker-compose up --build
 ```
 
-- Para subir os container sem fazer a build, digite:
+- Para subir os containers sem fazer a build, digite:
 
 ```
 $ docker-compose up
 ```
 
-- Para parar os container:
+- Para matar os containers:
 
 ```
 $ docker-compose down
 ```
 
-- Não se esqueça de rodar as migrações:
+- Não esqueça de rodar as migrações. É necessário que os containers existam e estejam rodando, abra outro terminal e digite o comando:
 
 ```
 $ npm run typeorm migration:run
