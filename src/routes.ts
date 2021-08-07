@@ -8,14 +8,14 @@ const router = Router()
 const userController = new UserController()
 
 router.get('/users', userController.index)
-router.get('/users/:nickname', userController.show)
 router.post('/users', CreateUserValidator, userController.store)
+router.get('/users/:nickname', userController.show)
 router.delete('/users/:id', IdValidator, userController.destroy)
 router.put(
   '/users/:id',
   IdValidator,
   UpdateUserValidator,
-  userController.update
+  userController.update,
 )
 
 export { router }

@@ -11,8 +11,8 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 
     return next()
   } catch (err) {
-    return res.status(400).json({
-      error: 'Validation fails',
+    return res.status(422).json({
+      error: 'error',
       messages: err.inner.map((m: any) => ({ message: m.message })),
     })
   }

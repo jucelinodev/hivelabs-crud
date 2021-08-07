@@ -12,21 +12,21 @@ export class UserController {
 
     if (nome && sobrenome) {
       const users = await userRepository.findByFullName(nome, sobrenome)
-      return res.json({ users })
+      return res.json(users)
     }
 
     if (nome) {
       const users = await userRepository.findByName(nome)
-      return res.json({ users })
+      return res.json(users)
     }
 
     if (sobrenome) {
       const users = await userRepository.findByLastName(sobrenome)
-      return res.json({ users })
+      return res.json(users)
     }
 
-    const user = await userRepository.findAll()
-    return res.json({ user })
+    const users = await userRepository.findAll()
+    return res.json(users)
   }
 
   async store(req: Request, res: Response) {
@@ -38,11 +38,11 @@ export class UserController {
     if (userExist) {
       throw new CustomError(
         'Já existe um usuário cadastrado com esse nickname',
-        409
+        409,
       )
     }
 
-    const user = await userRepository.createUser({
+    const users = await userRepository.createUser({
       name,
       lastname,
       nickname,
@@ -50,7 +50,7 @@ export class UserController {
       bio,
     })
 
-    return res.status(201).json({ user })
+    return res.status(201).json(users)
   }
 
   async show(req: Request, res: Response) {
@@ -62,7 +62,7 @@ export class UserController {
     if (!user) {
       throw new CustomError(
         'Não existe usuário cadastrado com esse nickname',
-        404
+        404,
       )
     }
 
@@ -80,7 +80,7 @@ export class UserController {
       if (useExist) {
         throw new CustomError(
           'Já existe um usuário cadastrado com esse nickname',
-          409
+          409,
         )
       }
     }

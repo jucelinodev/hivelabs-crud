@@ -104,61 +104,10 @@ $ docker-compose down
 $ npm run typeorm migration:run
 ```
 
-# Recursos da API
+# Documentação Swagger
 
-### GET '/users
+- A documentação fica na raiz "/" da api. Você pode acessar localmente por http://localhost:3333/
 
-Retorna uma lista de usuários, se não existe nenhum retorna um array vazio
+- Foi feita com Swagger para oferecer uma maior praticidade ao testar as requisições
 
-### GET '/users?nome=nomevalido'
-
-Retorna uma lista de usuários filtrada pelo coluna "name", se não existir nenhum retorna um array vazio
-
-### GET '/users?sobrenome=sobrenomevalido'
-
-Retorna uma lista de usuários filtrada pela coluna "lastname", se não existir nenhum retorna um array vazio
-
-### GET '/users?nome=nomevalido&sobrenome=sobrenomevalido'
-
-Retorna uma lista de usuários filtrada pela coluna "name" e "lastname", se não existir nenhum retorna um array vazio
-
-### GET '/users/:nickname'
-
-Retorna um usuário pelo nickname. Se não existe retorna um erro.
-
-### POST '/users'
-
-Cria um usuário com nickname único e retonar o usuário criado. A bio é opcional. Exemplo de request:
-
-```
-{
-	"name": "fulano",
-	"lastname": "silva",
-	"nickname": "fulano123",
-	"address": "Rua do bobo, numero 0",
-	"bio": "Uma pessoa normal"
-}
-```
-
-### PUT '/users/:id'
-
-Atualiza lastname ou address ou nickname, retorna usuário atualizado. Nickname precisa ser único. Exemplos de requests:
-
-```
-{
-	"lastname": "souza",
-	"address": "Rua atualizada",
-}
-```
-
-Ou:
-
-```
-{
-	"nickname": "fulano12345",
-}
-```
-
-### DELETE '/users/:id'
-
-Apaga um usuário do banco de dados pelo id e retorna uma mensagem de sucesso. Se não existir, retorna um erro.
+- Certifique-se de ter o banco de dados ativo e rodar as migrações antes de testar as rotas
