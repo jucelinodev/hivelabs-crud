@@ -76,12 +76,26 @@ $ npm start
 
 - Necessário ter o docker e o docker-compose instalado na sua máquina. Clone o projeto, configure o .env e instale as dependências
 
-- Certifique-se de que a porta 5432 não esteja ocupada por outro serviço ou container. Também é possível mudar o redirecionamento da porta no arquivo docker-compose.yml
+- Certifique-se de que a porta 5432 não esteja ocupada por outro serviço ou container, ou que tenha containers com nomes repetidos.
 
-- Para subir os containers usando docker-compose, digite:
+- Também é possível mudar o redirecionamento da porta no arquivo docker-compose.yml
+
+- Para subir os containers pela primeira vez usando docker-compose, digite:
+
+```
+$ docker-compose up --build
+```
+
+- Para subir os container sem fazer a build, digite:
 
 ```
 $ docker-compose up
+```
+
+- Para parar os container:
+
+```
+$ docker-compose down
 ```
 
 - Não se esqueça de rodar as migrações:
